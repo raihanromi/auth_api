@@ -1,8 +1,9 @@
 const User = require("../models/userModel");
 const {v4 : uuidv4} = require("uuid")
+const {setUser} = require("../service/authService")
 
-const {setUser,getUser} = require("../service/authService")
 
+//TODO : encrypt the password before saving in the DB
 const handleUserSingup = async (req, res) => {
   const { name, email, password } = req.body;
   const response = await User.create({ name, email, password });
